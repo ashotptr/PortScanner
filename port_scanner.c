@@ -66,11 +66,15 @@ int main(int argc, char* argv[]) {
                 break;
             case 'j':
                 num_jobs = atoi(optarg);
-                if (num_jobs <= 0) num_jobs = 1;
+                if (num_jobs <= 0) {
+                    num_jobs = 1;
+                }
                 break;
             case 'w':
                 global_timeout_ms = atoi(optarg);
-                if (global_timeout_ms <= 0) global_timeout_ms = 1000;
+                if (global_timeout_ms <= 0) {
+                    global_timeout_ms = 1000;
+                }
                 break;
             case 'u':
                 udp_scan = 1;
