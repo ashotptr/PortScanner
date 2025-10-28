@@ -193,15 +193,13 @@ void add_task(const char* ip, int port) {
     strncpy(new_task->ip_str, ip, INET_ADDRSTRLEN);
     new_task->port = port;
     new_task->next = NULL;
-
-    pthread_mutex_lock(&queue_lock);
+    
     if (task_queue_tail == NULL) {
         task_queue_head = task_queue_tail = new_task;
     } else {
         task_queue_tail->next = new_task;
         task_queue_tail = new_task;
     }
-    pthread_mutex_unlock(&queue_lock);
 }
 
 void* worker_thread(void* arg) {
